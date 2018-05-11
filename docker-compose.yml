@@ -1,0 +1,21 @@
+version: '2'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/app/Dockerfile
+    volumes:
+      - .:/home/app/
+      - vendorfiles:/home/app/vendor
+    ports:
+      - "80:80"
+  node:
+    build:
+      context: .
+      dockerfile: docker/node/Dockerfile
+    volumes:
+      - .:/home/app/
+      - nodemodules:/home/app/node_modules
+volumes:
+  nodemodules:
+  vendorfiles:
